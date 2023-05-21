@@ -6,18 +6,13 @@ import org.hygge.generator.domain.exception.GeneratorException;
 import org.hygge.generator.domain.response.Response;
 import org.springframework.context.annotation.Profile;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @Slf4j
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-
-    @Profile(GlobalConstants.ACTIVE_INTEGRATION)
-    @ExceptionHandler(value = HttpRequestMethodNotSupportedException.class)
-    public Response<Object> httpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException exception) {
-        return Response.fail(exception.getMessage());
-    }
 
     @ExceptionHandler(value = IllegalArgumentException.class)
     public Response<Object> illegalArgumentExceptionHandle(IllegalArgumentException exception) {
@@ -33,5 +28,17 @@ public class GlobalExceptionHandler {
     public Response<Object> exceptionHandle(Exception exception) {
         log.info("", exception);
         return Response.fail("please try again later");
+    }
+
+    @Profile(GlobalConstants.ACTIVE_INTEGRATION)
+    @ExceptionHandler(value = {HttpRequestMethodNotSupportedException.class})
+    public Response<Object> httpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException exception) {
+        return Response.fail(exception.getMessage());
+    }
+
+    @Profile(GlobalConstants.ACTIVE_INTEGRATION)
+    @ExceptionHandler(value = {MissingServletRequestParameterException.class})
+    public Response<Object> missingServletRequestParameterException(MissingServletRequestParameterException exception) {
+        return Response.fail(exception.getMessage());
     }
 }
