@@ -52,4 +52,8 @@ public interface TemplateMapper {
     @Insert("INSERT INTO template(template_id, name, create_time, update_time, content) " +
             " VALUES(#{templateDomain.templateId}, #{templateDomain.name}, #{templateDomain.createTime}, #{templateDomain.updateTime}, #{templateDomain.content}) ")
     Long templateInsert(@Param("templateDomain") TemplateDomain templateDomain);
+
+    @Insert(" UPDATE template SET name=#{templateDomain.name}, update_time=#{templateDomain.updateTime}, content=#{templateDomain.content} " +
+            " WHERE template_id=#{templateDomain.templateId} ")
+    long templateUpdate(@Param("templateDomain") TemplateDomain templateDomain);
 }

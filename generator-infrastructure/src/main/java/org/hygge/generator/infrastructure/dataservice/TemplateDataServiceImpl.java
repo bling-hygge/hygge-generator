@@ -53,6 +53,11 @@ public class TemplateDataServiceImpl implements TemplateDataService {
 
     @Override
     public Boolean templateModify(TemplateModifyRequest request) {
-        return null;
+        TemplateDomain templateDomain = new TemplateDomain();
+        templateDomain.setTemplateId(request.getTemplateId());
+        templateDomain.setName(request.getName());
+        templateDomain.setUpdateTime(new Date());
+        templateDomain.setContent(request.getContent());
+        return 1L == templateMapper.templateUpdate(templateDomain);
     }
 }

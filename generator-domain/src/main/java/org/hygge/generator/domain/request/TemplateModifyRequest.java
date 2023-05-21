@@ -2,6 +2,7 @@ package org.hygge.generator.domain.request;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Schema(title = "新增模板请求模型")
@@ -9,7 +10,7 @@ import lombok.Data;
 public class TemplateModifyRequest {
 
     @Schema(title = "模板ID")
-    @NotEmpty
+    @NotNull
     private Long templateId;
 
     @Schema(title = "模板名称")

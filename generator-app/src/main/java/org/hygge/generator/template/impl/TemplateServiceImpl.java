@@ -1,5 +1,6 @@
 package org.hygge.generator.template.impl;
 
+import org.hygge.generator.domain.constants.GlobalConstants;
 import org.hygge.generator.domain.exception.NoSuchTemplateException;
 import org.hygge.generator.domain.request.TemplateAddRequest;
 import org.hygge.generator.domain.request.TemplateListRequest;
@@ -11,6 +12,7 @@ import org.hygge.generator.domain.vo.TemplateGetVo;
 import org.hygge.generator.domain.vo.TemplateListVo;
 import org.hygge.generator.template.TemplateService;
 import org.springframework.stereotype.Service;
+import org.thymeleaf.TemplateEngine;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,10 +21,13 @@ import java.util.Objects;
 @Service
 public class TemplateServiceImpl implements TemplateService {
 
+    private final TemplateEngine templateEngine;
+
     private final TemplateDataService templateDataService;
 
 
-    public TemplateServiceImpl(TemplateDataService templateDataService) {
+    public TemplateServiceImpl(TemplateEngine templateEngine, TemplateDataService templateDataService) {
+        this.templateEngine = templateEngine;
         this.templateDataService = templateDataService;
     }
 
@@ -73,6 +78,10 @@ public class TemplateServiceImpl implements TemplateService {
         if (Objects.isNull(templateDomain)) {
             throw new NoSuchTemplateException(request.getTemplateId());
         }
-        return templateDataService.templateModify(request);
+        Boolean result = templateDataService.templateModify(request);
+        if (result) {
+            templateEngine.clearTemplateCacheFor(GlobalConstants.DATABASE_TEMPLATE_RESOLVER_PATTERN + request.getTemplateId());
+        }
+        return result;
     }
 }
