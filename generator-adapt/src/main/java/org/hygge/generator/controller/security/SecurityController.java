@@ -15,27 +15,27 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @Tag(
-        name = "密码模块"
+        name = "安全模块"
 )
 @RestController
 @RequestMapping(
-        path = "/password"
+        path = "/security"
 )
-public class PasswordController {
+public class SecurityController {
 
     private final PasswordService passwordService;
 
-    public PasswordController(PasswordService passwordService) {
+    public SecurityController(PasswordService passwordService) {
         this.passwordService = passwordService;
     }
 
     @Operation(
-            summary = "随机密码生成"
+            summary = "安全随机密码生成"
     )
     @Parameters(
             @Parameter(name = "length", in = ParameterIn.QUERY, description = "密码长度", required = true)
     )
-    @GetMapping(path = "/random/build")
+    @GetMapping(path = "/random/password")
     public Response<String> randomBuild(@Valid @Min(value = 8) @RequestParam(name = "length") Integer length) {
         return Response.success(passwordService.generateRandomPassword(length));
     }
