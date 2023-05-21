@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "hygge.blog.version",
+      "type": "java.lang.String",
+      "description": "版本号"
+    }
+  ]
+}
