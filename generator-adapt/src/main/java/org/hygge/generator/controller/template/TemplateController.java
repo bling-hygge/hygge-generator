@@ -36,17 +36,17 @@ public class TemplateController {
             summary = "模板详情"
     )
     @Parameters(
-            @Parameter(name = "id", in = ParameterIn.PATH, description = "模板ID", required = true)
+            @Parameter(name = "templateId", in = ParameterIn.PATH, description = "模板ID", required = true)
     )
-    @GetMapping(path = "/template/get/{id}")
-    public Response<TemplateGetVo> templateGet(@Valid @NotNull @PathVariable(name = "id") Long templateId) {
+    @GetMapping(path = "/get/{templateId}")
+    public Response<TemplateGetVo> templateGet(@Valid @NotNull @PathVariable(name = "templateId") Long templateId) {
         return Response.success(templateService.templateGet(templateId));
     }
 
     @Operation(
             summary = "模板列表"
     )
-    @PostMapping(path = "/template/list")
+    @PostMapping(path = "/list")
     public Response<PageVo<TemplateListVo>> templateList(@Valid @RequestBody TemplateListRequest request) {
         return Response.success(templateService.templateList(request));
     }
@@ -54,7 +54,7 @@ public class TemplateController {
     @Operation(
             summary = "新增模板"
     )
-    @PostMapping(path = "/template/add")
+    @PostMapping(path = "/add")
     public Response<Boolean> templateAdd(@Valid @RequestBody TemplateAddRequest request) {
         return Response.success(templateService.templateAdd(request));
     }
@@ -62,7 +62,7 @@ public class TemplateController {
     @Operation(
             summary = "更新模板"
     )
-    @PostMapping(path = "/template/modify")
+    @PutMapping(path = "/modify")
     public Response<Boolean> templateModify(@Valid @RequestBody TemplateModifyRequest request) {
         return Response.success(templateService.templateModify(request));
     }
