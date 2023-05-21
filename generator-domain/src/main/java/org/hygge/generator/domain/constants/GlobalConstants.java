@@ -16,4 +16,6 @@ public abstract class GlobalConstants {
     public final static String ACTIVE_GRAY = "gray";
 
     public final static String ACTIVE_PRODUCTION = "production";
+
+    public final static String DATABASE_TEMPLATE_RESOLVER_PATTERN = "gen-db-";
 }
