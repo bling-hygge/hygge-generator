@@ -10,6 +10,8 @@ public class TemplateDomain {
 
     private Long templateId;
 
+    private Integer templateTypeCode;
+
     private String name;
 
     private String content;

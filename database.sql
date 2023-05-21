@@ -6,11 +6,12 @@ USE `generator`;
 
 
 CREATE TABLE `generator`.`template` (
-    `id` BIGINT UNSIGNED AUTO_INCREMENT NOT NULL COMMENT '自增主键ID',
-    `template_id` BIGINT UNSIGNED NOT NULL COMMENT '模板ID',
-    `name` VARCHAR(64) NOT NULL DEFAULT '' COMMENT '模板名称',
+    `id` BIGINT AUTO_INCREMENT COMMENT '自增主键ID',
+    `template_id` BIGINT COMMENT '模板ID',
+    `template_type_code` INT COMMENT '模板类型编码',
+    `name` VARCHAR(64) DEFAULT '' COMMENT '模板名称',
     `content` TEXT COMMENT '模板内容',
-    `record_status_code` INT NOT NULL DEFAULT 0 COMMENT '记录状态',
+    `record_status_code` INT DEFAULT 0 COMMENT '记录状态',
     PRIMARY KEY (`id`),
     INDEX template_idx_template_id (`template_id`)
 ) ENGINE = InnoDB

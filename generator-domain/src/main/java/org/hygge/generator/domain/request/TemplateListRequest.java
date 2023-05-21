@@ -18,6 +18,9 @@ public class TemplateListRequest extends PageRequest {
     @Size(max = 20)
     private List<Long> templateIdList;
 
+    @Schema(title = "模板类型")
+    private Integer templateTypeCode;
+
     @Schema(title = "模板名称")
     private String templateName;
 

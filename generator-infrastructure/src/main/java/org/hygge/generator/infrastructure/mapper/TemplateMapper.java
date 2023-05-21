@@ -13,13 +13,13 @@ import java.util.List;
 @Mapper
 public interface TemplateMapper {
 
-    @Select("SELECT template_id, name, create_time, update_time, content" +
+    @Select("SELECT template_id, template_type_code, name, create_time, update_time, content" +
             " FROM template " +
             " WHERE template_id=#{templateId} ")
     TemplateDomain findOne(@Param("templateId") Long templateId);
 
     @Select("<script>" +
-            "SELECT template_id, name, create_time, update_time " +
+            "SELECT template_id, template_type_code, name, create_time, update_time " +
             " FROM template " +
             "<where>" +
             "<if test=\"templateIdList != null and templateIdList.size() &gt; 0\">" +
@@ -27,6 +27,9 @@ public interface TemplateMapper {
             "   <foreach collection=\"templateIdList\" item=\"item\" open=\"(\" close=\")\" separator=\",\">" +
             "      #{item} " +
             "   </foreach>" +
+            "</if>" +
+            "<if test=\"templateTypeCode != null\">" +
+            "   AND template_type_code = #{templateTypeCode}" +
             "</if>" +
             "<if test=\"templateName != null and templateName != ''\">" +
             "   AND name LIKE concat('%', #{templateName}, '%') " +
@@ -45,12 +48,13 @@ public interface TemplateMapper {
             "</if>" +
             "</where>" +
             "</script>")
-    IPage<TemplateDomain> findAllWithPage(IPage<TemplateDomain> page, @Param("templateIdList") List<Long> templateIdList, @Param("templateName") String templateName,
+    IPage<TemplateDomain> findAllWithPage(IPage<TemplateDomain> page, @Param("templateIdList") List<Long> templateIdList,
+                                          @Param("templateTypeCode") Integer templateTypeCode, @Param("templateName") String templateName,
                                           @Param("createBeginTime") Date createBeginTime, @Param("createEndTime") Date createEndTime,
                                           @Param("updateBeginTime") Date updateBeginTime, @Param("updateEndTime") Date updateEndTime);
 
-    @Insert("INSERT INTO template(template_id, name, create_time, update_time, content) " +
-            " VALUES(#{templateDomain.templateId}, #{templateDomain.name}, #{templateDomain.createTime}, #{templateDomain.updateTime}, #{templateDomain.content}) ")
+    @Insert("INSERT INTO template(template_id, template_type_code, name, create_time, update_time, content) " +
+            " VALUES(#{templateDomain.templateId}, #{templateDomain.templateTypeCode}, #{templateDomain.name}, #{templateDomain.createTime}, #{templateDomain.updateTime}, #{templateDomain.content}) ")
     Long templateInsert(@Param("templateDomain") TemplateDomain templateDomain);
 
     @Insert(" UPDATE template SET name=#{templateDomain.name}, update_time=#{templateDomain.updateTime}, content=#{templateDomain.content} " +

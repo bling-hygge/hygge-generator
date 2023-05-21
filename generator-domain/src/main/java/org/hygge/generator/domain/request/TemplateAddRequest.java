@@ -8,6 +8,9 @@ import lombok.Data;
 @Data
 public class TemplateAddRequest {
 
+    @Schema(title = "模板类型编码", hidden = true)
+    private Integer templateTypeCode;
+
     @Schema(title = "模板名称")
     @NotEmpty
     private String name;

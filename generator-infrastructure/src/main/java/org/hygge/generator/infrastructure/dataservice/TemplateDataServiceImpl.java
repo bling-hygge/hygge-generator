@@ -29,7 +29,9 @@ public class TemplateDataServiceImpl implements TemplateDataService {
     @Override
     public PageVo<TemplateDomain> templateList(TemplateListRequest request) {
         IPage<TemplateDomain> page = Page.of(request.getPageNo(), request.getPageSize());
-        page = templateMapper.findAllWithPage(page, request.getTemplateIdList(), request.getTemplateName(), request.getCreateBeginTime(), request.getCreateEndTime(), request.getUpdateBeginTime(), request.getUpdateEndTime());
+        page = templateMapper.findAllWithPage(page, request.getTemplateIdList(), request.getTemplateTypeCode(),
+                request.getTemplateName(), request.getCreateBeginTime(), request.getCreateEndTime(),
+                request.getUpdateBeginTime(), request.getUpdateEndTime());
         PageVo<TemplateDomain> pageVo = new PageVo<>();
         pageVo.setTotalCount(page.getTotal());
         pageVo.setTotalPageNum(page.getPages());
@@ -44,6 +46,7 @@ public class TemplateDataServiceImpl implements TemplateDataService {
     public Boolean templateAdd(TemplateAddRequest request) {
         TemplateDomain templateDomain = new TemplateDomain();
         templateDomain.setTemplateId(new Date().getTime());
+        templateDomain.setTemplateTypeCode(request.getTemplateTypeCode());
         templateDomain.setName(request.getName());
         templateDomain.setCreateTime(new Date());
         templateDomain.setUpdateTime(new Date());

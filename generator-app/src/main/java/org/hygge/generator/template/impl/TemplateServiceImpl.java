@@ -1,7 +1,9 @@
 package org.hygge.generator.template.impl;
 
 import org.hygge.generator.domain.constants.GlobalConstants;
+import org.hygge.generator.domain.enums.TemplateTypeEnum;
 import org.hygge.generator.domain.exception.NoSuchTemplateException;
+import org.hygge.generator.domain.exception.UnmodifiableTemplateException;
 import org.hygge.generator.domain.request.TemplateAddRequest;
 import org.hygge.generator.domain.request.TemplateListRequest;
 import org.hygge.generator.domain.request.TemplateModifyRequest;
@@ -39,6 +41,8 @@ public class TemplateServiceImpl implements TemplateService {
         }
         TemplateGetVo templateGetVo = new TemplateGetVo();
         templateGetVo.setTemplateId(templateDomain.getTemplateId());
+        templateGetVo.setTemplateTypeCode(templateDomain.getTemplateTypeCode());
+        templateGetVo.setTemplateType(TemplateTypeEnum.getByEnumCode(templateDomain.getTemplateTypeCode()).getEnumDescription());
         templateGetVo.setName(templateDomain.getName());
         templateGetVo.setContent(templateDomain.getContent());
         return templateGetVo;
@@ -58,6 +62,8 @@ public class TemplateServiceImpl implements TemplateService {
         for (TemplateDomain item : templateDomainPageVo.getDataList()) {
             listVoTemp = new TemplateListVo();
             listVoTemp.setTemplateId(item.getTemplateId());
+            listVoTemp.setTemplateTypeCode(item.getTemplateTypeCode());
+            listVoTemp.setTemplateType(TemplateTypeEnum.getByEnumCode(item.getTemplateTypeCode()).getEnumDescription());
             listVoTemp.setName(item.getName());
             listVoTemp.setCreateTime(item.getCreateTime());
             listVoTemp.setUpdateTime(item.getUpdateTime());
@@ -68,7 +74,14 @@ public class TemplateServiceImpl implements TemplateService {
     }
 
     @Override
-    public Boolean templateAdd(TemplateAddRequest request) {
+    public Boolean templateAddPublic(TemplateAddRequest request) {
+        request.setTemplateTypeCode(TemplateTypeEnum.PUBLIC.getEnumCode());
+        return templateDataService.templateAdd(request);
+    }
+
+    @Override
+    public Boolean templateAddPrivate(TemplateAddRequest request) {
+        request.setTemplateTypeCode(TemplateTypeEnum.PRIVATE.getEnumCode());
         return templateDataService.templateAdd(request);
     }
 
@@ -77,6 +90,9 @@ public class TemplateServiceImpl implements TemplateService {
         TemplateDomain templateDomain = templateDataService.templateGet(request.getTemplateId());
         if (Objects.isNull(templateDomain)) {
             throw new NoSuchTemplateException(request.getTemplateId());
+        }
+        if (TemplateTypeEnum.PUBLIC.getEnumCode() == templateDomain.getTemplateTypeCode()) {
+            throw new UnmodifiableTemplateException(request.getTemplateId());
         }
         Boolean result = templateDataService.templateModify(request);
         if (result) {

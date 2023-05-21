@@ -13,6 +13,12 @@ public class TemplateListVo {
     @Schema(title = "模板ID")
     private Long templateId;
 
+    @Schema(title = "模板类型编码")
+    private Integer templateTypeCode;
+
+    @Schema(title = "模板类型")
+    private String templateType;
+
     @Schema(title = "模板名称")
     private String name;
 

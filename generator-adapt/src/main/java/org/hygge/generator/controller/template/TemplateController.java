@@ -52,11 +52,19 @@ public class TemplateController {
     }
 
     @Operation(
-            summary = "新增模板"
+            summary = "新增公共模板"
     )
-    @PostMapping(path = "/add")
-    public Response<Boolean> templateAdd(@Valid @RequestBody TemplateAddRequest request) {
-        return Response.success(templateService.templateAdd(request));
+    @PostMapping(path = "/add/public")
+    public Response<Boolean> templateAddPublic(@Valid @RequestBody TemplateAddRequest request) {
+        return Response.success(templateService.templateAddPublic(request));
+    }
+
+    @Operation(
+            summary = "新增私人模板"
+    )
+    @PostMapping(path = "/add/private")
+    public Response<Boolean> templateAddPrivate(@Valid @RequestBody TemplateAddRequest request) {
+        return Response.success(templateService.templateAddPrivate(request));
     }
 
     @Operation(

@@ -14,7 +14,9 @@ public interface TemplateService {
 
     PageVo<TemplateListVo> templateList(TemplateListRequest request);
 
-    Boolean templateAdd(TemplateAddRequest request);
-
     Boolean templateModify(TemplateModifyRequest request);
+
+    Boolean templateAddPublic(TemplateAddRequest request);
+
+    Boolean templateAddPrivate(TemplateAddRequest request);
 }
