@@ -9,13 +9,13 @@ public enum ResponseCodeEnum {
     ;
 
 
-    private int enumCode;
+    private final int enumCode;
 
-    private String enumValue;
+    private final String enumValue;
 
-    private String enumDescription;
+    private final String enumDescription;
 
-    private String enumI18n;
+    private final String enumI18n;
 
     ResponseCodeEnum(int enumCode, String enumValue, String enumDescription, String enumI18n) {
         this.enumCode = enumCode;
