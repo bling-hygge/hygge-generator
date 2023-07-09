@@ -1,7 +1,7 @@
 package org.hygge.generator.template.impl;
 
-import org.hygge.generator.domain.constants.GlobalConstants;
-import org.hygge.generator.domain.exception.NoSuchTemplateException;
+import org.hygge.generator.domain.common.GlobalConstants;
+import org.hygge.generator.domain.template.NoSuchTemplateException;
 import org.hygge.generator.domain.template.TemplateDataService;
 import org.hygge.generator.domain.template.TemplateDomain;
 import org.springframework.stereotype.Component;

@@ -1,4 +1,4 @@
-package org.hygge.generator.domain.enums;
+package org.hygge.generator.domain.common;
 
 import lombok.Getter;
 

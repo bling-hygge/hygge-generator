@@ -1,17 +1,17 @@
 package org.hygge.generator.template.impl;
 
-import org.hygge.generator.domain.constants.GlobalConstants;
-import org.hygge.generator.domain.enums.TemplateTypeEnum;
-import org.hygge.generator.domain.exception.NoSuchTemplateException;
-import org.hygge.generator.domain.exception.UnmodifiableTemplateException;
-import org.hygge.generator.domain.request.TemplateAddRequest;
-import org.hygge.generator.domain.request.TemplateListRequest;
-import org.hygge.generator.domain.request.TemplateModifyRequest;
+import org.hygge.generator.domain.common.GlobalConstants;
+import org.hygge.generator.domain.template.TemplateTypeEnum;
+import org.hygge.generator.domain.template.NoSuchTemplateException;
+import org.hygge.generator.domain.template.UnmodifiableTemplateException;
+import org.hygge.generator.domain.template.TemplateAddRequest;
+import org.hygge.generator.domain.template.TemplateListRequest;
+import org.hygge.generator.domain.template.TemplateModifyRequest;
 import org.hygge.generator.domain.template.TemplateDataService;
 import org.hygge.generator.domain.template.TemplateDomain;
-import org.hygge.generator.domain.vo.PageVo;
-import org.hygge.generator.domain.vo.TemplateGetVo;
-import org.hygge.generator.domain.vo.TemplateListVo;
+import org.hygge.generator.domain.common.PageVo;
+import org.hygge.generator.domain.template.TemplateGetVo;
+import org.hygge.generator.domain.template.TemplateListVo;
 import org.hygge.generator.template.TemplateService;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;

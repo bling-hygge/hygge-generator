@@ -1,4 +1,4 @@
-package org.hygge.generator.domain.request;
+package org.hygge.generator.domain.common;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Max;

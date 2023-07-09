@@ -1,9 +1,6 @@
 package org.hygge.generator.domain.template;
 
-import org.hygge.generator.domain.request.TemplateAddRequest;
-import org.hygge.generator.domain.request.TemplateListRequest;
-import org.hygge.generator.domain.request.TemplateModifyRequest;
-import org.hygge.generator.domain.vo.PageVo;
+import org.hygge.generator.domain.common.PageVo;
 
 public interface TemplateDataService {
 

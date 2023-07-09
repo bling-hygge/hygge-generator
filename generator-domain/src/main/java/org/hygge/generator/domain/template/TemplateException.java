@@ -1,6 +1,7 @@
-package org.hygge.generator.domain.exception;
+package org.hygge.generator.domain.template;
 
 import lombok.Getter;
+import org.hygge.generator.domain.common.GeneratorException;
 
 import java.util.Objects;
 

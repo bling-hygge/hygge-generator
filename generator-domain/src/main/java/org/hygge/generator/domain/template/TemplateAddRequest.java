@@ -1,17 +1,15 @@
-package org.hygge.generator.domain.request;
+package org.hygge.generator.domain.template;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Schema(title = "新增模板请求模型")
 @Data
-public class TemplateModifyRequest {
+public class TemplateAddRequest {
 
-    @Schema(title = "模板ID")
-    @NotNull
-    private Long templateId;
+    @Schema(title = "模板类型编码", hidden = true)
+    private Integer templateTypeCode;
 
     @Schema(title = "模板名称")
     @NotEmpty

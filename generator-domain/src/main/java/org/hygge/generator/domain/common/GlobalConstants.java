@@ -1,4 +1,4 @@
-package org.hygge.generator.domain.constants;
+package org.hygge.generator.domain.common;
 
 import java.util.TimeZone;
 

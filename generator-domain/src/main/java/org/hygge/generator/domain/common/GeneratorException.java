@@ -1,4 +1,4 @@
-package org.hygge.generator.domain.exception;
+package org.hygge.generator.domain.common;
 
 public class GeneratorException extends RuntimeException {
 

@@ -8,7 +8,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import org.hygge.generator.code.CodeService;
-import org.hygge.generator.domain.response.Response;
+import org.hygge.generator.domain.common.Response;
 import org.springframework.web.bind.annotation.*;
 
 @Tag(

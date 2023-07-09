@@ -1,6 +1,6 @@
 package org.hygge.generator.runner.config;
 
-import org.hygge.generator.domain.constants.GlobalConstants;
+import org.hygge.generator.domain.common.GlobalConstants;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.env.EnvironmentPostProcessor;
 import org.springframework.core.env.ConfigurableEnvironment;

@@ -1,4 +1,4 @@
-package org.hygge.generator.domain.response;
+package org.hygge.generator.domain.common;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hygge.generator.domain.enums.ResponseCodeEnum;
 
 @Data
 @NoArgsConstructor

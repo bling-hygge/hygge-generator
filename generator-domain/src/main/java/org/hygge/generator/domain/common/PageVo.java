@@ -1,4 +1,4 @@
-package org.hygge.generator.domain.vo;
+package org.hygge.generator.domain.common;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;

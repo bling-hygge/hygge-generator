@@ -1,11 +1,11 @@
 package org.hygge.generator.template;
 
-import org.hygge.generator.domain.request.TemplateAddRequest;
-import org.hygge.generator.domain.request.TemplateListRequest;
-import org.hygge.generator.domain.request.TemplateModifyRequest;
-import org.hygge.generator.domain.vo.PageVo;
-import org.hygge.generator.domain.vo.TemplateGetVo;
-import org.hygge.generator.domain.vo.TemplateListVo;
+import org.hygge.generator.domain.template.TemplateAddRequest;
+import org.hygge.generator.domain.template.TemplateListRequest;
+import org.hygge.generator.domain.template.TemplateModifyRequest;
+import org.hygge.generator.domain.common.PageVo;
+import org.hygge.generator.domain.template.TemplateGetVo;
+import org.hygge.generator.domain.template.TemplateListVo;
 
 public interface TemplateService {
 

@@ -1,7 +1,7 @@
 package org.hygge.generator.code.impl;
 
 import org.hygge.generator.code.CodeService;
-import org.hygge.generator.domain.constants.GlobalConstants;
+import org.hygge.generator.domain.common.GlobalConstants;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;

@@ -1,9 +1,9 @@
 package org.hygge.generator.runner.config;
 
 import lombok.extern.slf4j.Slf4j;
-import org.hygge.generator.domain.constants.GlobalConstants;
-import org.hygge.generator.domain.exception.GeneratorException;
-import org.hygge.generator.domain.response.Response;
+import org.hygge.generator.domain.common.GlobalConstants;
+import org.hygge.generator.domain.common.GeneratorException;
+import org.hygge.generator.domain.common.Response;
 import org.springframework.context.annotation.Profile;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MissingServletRequestParameterException;

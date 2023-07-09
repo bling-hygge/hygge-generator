@@ -1,4 +1,4 @@
-package org.hygge.generator.domain.exception;
+package org.hygge.generator.domain.template;
 
 public class NoSuchTemplateException extends TemplateException {
 

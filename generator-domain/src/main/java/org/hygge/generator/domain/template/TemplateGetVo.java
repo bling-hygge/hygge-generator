@@ -1,14 +1,13 @@
-package org.hygge.generator.domain.vo;
+package org.hygge.generator.domain.template;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
-import org.hygge.generator.domain.constants.GlobalConstants;
 
 import java.util.Date;
 
-@Schema(title = "模板列表响应视图模型")
+@Schema(title = "模板详情响应视图模型")
 @Data
-public class TemplateListVo {
+public class TemplateGetVo {
 
     @Schema(title = "模板ID")
     private Long templateId;
@@ -22,9 +21,12 @@ public class TemplateListVo {
     @Schema(title = "模板名称")
     private String name;
 
-    @Schema(title = "模板创建时间", pattern = GlobalConstants.DATE_FORMAT)
+    @Schema(title = "模板创建时间")
     private Date createTime;
 
-    @Schema(title = "模板更新时间", pattern = GlobalConstants.DATE_FORMAT)
+    @Schema(title = "模板更新时间")
     private Date updateTime;
+
+    @Schema(title = "模板内容")
+    private String content;
 }

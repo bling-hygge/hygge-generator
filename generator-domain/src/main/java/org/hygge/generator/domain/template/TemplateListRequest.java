@@ -1,10 +1,11 @@
-package org.hygge.generator.domain.request;
+package org.hygge.generator.domain.template;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.hygge.generator.domain.constants.GlobalConstants;
+import org.hygge.generator.domain.common.PageRequest;
+import org.hygge.generator.domain.common.GlobalConstants;
 
 import java.util.Date;
 import java.util.List;
