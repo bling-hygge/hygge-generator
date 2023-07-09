@@ -1,11 +1,14 @@
 package org.hygge.generator.runner.config;
 
 import com.baomidou.mybatisplus.annotation.DbType;
+import com.baomidou.mybatisplus.autoconfigure.ConfigurationCustomizer;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+@MapperScan(basePackages = {"org.hygge.generator.infrastructure.mapper"})
 @Configuration
 public class MybatisPlusConfig {
 
@@ -14,5 +17,10 @@ public class MybatisPlusConfig {
         MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
         interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MYSQL));
         return interceptor;
+    }
+
+    @Bean
+    public ConfigurationCustomizer configurationCustomizer() {
+        return configuration -> configuration.setMapUnderscoreToCamelCase(true);
     }
 }

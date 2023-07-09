@@ -1,6 +1,6 @@
 package org.hygge.generator.infrastructure.mapper;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -13,7 +13,7 @@ import java.util.List;
 @Mapper
 public interface TemplateMapper {
 
-    @Select("SELECT template_id, template_type_code, name, create_time, update_time, content" +
+    @Select("SELECT template_id, template_type_code, name, create_time, update_time, content " +
             " FROM template " +
             " WHERE template_id=#{templateId} ")
     TemplateDomain findOne(@Param("templateId") Long templateId);
@@ -48,7 +48,7 @@ public interface TemplateMapper {
             "</if>" +
             "</where>" +
             "</script>")
-    IPage<TemplateDomain> findAllWithPage(IPage<TemplateDomain> page, @Param("templateIdList") List<Long> templateIdList,
+    Page<TemplateDomain> findAllWithPage(Page<TemplateDomain> page, @Param("templateIdList") List<Long> templateIdList,
                                           @Param("templateTypeCode") Integer templateTypeCode, @Param("templateName") String templateName,
                                           @Param("createBeginTime") Date createBeginTime, @Param("createEndTime") Date createEndTime,
                                           @Param("updateBeginTime") Date updateBeginTime, @Param("updateEndTime") Date updateEndTime);

@@ -1,6 +1,5 @@
 package org.hygge.generator.infrastructure.dataservice;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.hygge.generator.domain.request.TemplateAddRequest;
 import org.hygge.generator.domain.request.TemplateListRequest;
@@ -28,7 +27,7 @@ public class TemplateDataServiceImpl implements TemplateDataService {
 
     @Override
     public PageVo<TemplateDomain> templateList(TemplateListRequest request) {
-        IPage<TemplateDomain> page = Page.of(request.getPageNo(), request.getPageSize());
+        Page<TemplateDomain> page = Page.of(request.getPageNo(), request.getPageSize());
         page = templateMapper.findAllWithPage(page, request.getTemplateIdList(), request.getTemplateTypeCode(),
                 request.getTemplateName(), request.getCreateBeginTime(), request.getCreateEndTime(),
                 request.getUpdateBeginTime(), request.getUpdateEndTime());
